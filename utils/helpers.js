@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 import { Notifications } from 'expo'
-import * as Permissions from 'expo-permissions';
+import * as Permissions from 'expo-permissions'
 
 const NOTIFICATION_KEY = 'MobileFlashCards:notifications'
 
@@ -32,10 +32,8 @@ export function setLocalNotification() {
             if (status === 'granted') {
               Notifications.cancelAllScheduledNotificationsAsync()
 
-              let tomorrow = new Date()
-              tomorrow.setDate(tomorrow.getDate() + 1)
-              tomorrow.setHours(20)
-              tomorrow.setMintutes(0)
+              const today = new Date()
+              const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, 10)
 
               Notifications.scheduleLocalNotificationAsync(
                 createNotification(),
