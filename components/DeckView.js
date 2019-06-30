@@ -10,10 +10,15 @@ class DeckView extends React.Component {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={styles.title}>{deck.title}</Text>
         <Text style={styles.cards}>{deck.questions.length} cards</Text>
-        <TouchableButton onPress={() => navigation.navigate('AddCard', {key: deck.title})}>
+        <TouchableButton onPress={() => navigation.navigate('AddCard', { key: deck.title })}>
           Add Card
         </TouchableButton>
-        <TouchableButton styleButton={{backgroundColor: 'black'}} styleText={{color: 'white'}} onPress={() => navigation.navigate('Quiz', {key: deck.title})}>
+        <TouchableButton
+          styleButton={{ backgroundColor: 'black' }}
+          styleText={{ color: 'white' }}
+          disabled={deck.questions.length ? false : true}
+          onPress={() => navigation.navigate('Quiz', { key: deck.title })}
+        >
           Start Quiz
         </TouchableButton>
       </View>

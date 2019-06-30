@@ -37,7 +37,12 @@ class AddDeck extends React.Component {
           placeholder='Deck Title'
         />
 
-        <TouchableButton styleButton={{backgroundColor: 'black'}} styleText={{color: 'white'}} onPress={this.submit}>
+        <TouchableButton
+          styleButton={{backgroundColor: 'black'}}
+          styleText={{color: 'white'}}
+          disabled={(this.state.title === '') ? true : false}
+          onPress={this.submit}
+        >
           Submit
         </TouchableButton>
 

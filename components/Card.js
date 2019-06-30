@@ -6,6 +6,13 @@ export default class Card extends React.Component {
   state = {
     flip: false
   }
+
+  componentWillReceiveProps() {
+    this.setState({
+      flip: false
+    })
+  }
+
   toggle = () => {
     this.setState((current) => ({
       flip: !current.flip
@@ -15,16 +22,16 @@ export default class Card extends React.Component {
     const { question, answer, remaining, total, handleHint } = this.props
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{alignSelf: 'stretch'}}>{remaining}/{total}</Text>
+        <Text style={{ alignSelf: 'stretch' }}>{remaining}/{total}</Text>
 
-        {this.state.flip
+        {!this.state.flip
           ? <View style={styles.card}>
             <Text style={styles.text}>{question}</Text>
-            <TouchableOpacity onPress={this.toggle}><Text style={{color: 'red'}}>Answer</Text></TouchableOpacity>
+            <TouchableOpacity onPress={this.toggle}><Text style={{ color: 'red', marginTop: 15 }}>Answer</Text></TouchableOpacity>
           </View>
           : <View style={styles.card}>
             <Text style={styles.text}>{answer}</Text>
-            <TouchableOpacity onPress={this.toggle}><Text style={{color: 'red'}}>Question</Text></TouchableOpacity>
+            <TouchableOpacity onPress={this.toggle}><Text style={{ color: 'red', marginTop: 15 }}>Question</Text></TouchableOpacity>
           </View>
         }
 
@@ -41,14 +48,14 @@ export default class Card extends React.Component {
 
 const styles = StyleSheet.create({
   card: {
+    width: 300,
     height: 200,
     alignItems: 'center',
     justifyContent: 'center',
     margin: 20,
   },
   text: {
-    fontSize: 40,
-    textAlign: 'center',
-    margin: 20
+    fontSize: 28,
+    textAlign: 'center'
   }
 })

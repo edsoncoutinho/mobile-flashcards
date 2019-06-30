@@ -29,23 +29,30 @@ class AddCard extends React.Component {
   }
 
   render() {
+    const { question, answer } = this.state
+    const disabledInput = (question === '' || answer === '') ? true : false
     return (
       <KeyboardAvoidingView behavior='padding' style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <TextInput
           style={styles.input}
           onChangeText={(question) => this.setState({ question })}
-          value={this.state.question}
+          value={question}
           placeholder='Question'
         />
 
         <TextInput
           style={styles.input}
           onChangeText={(answer) => this.setState({ answer })}
-          value={this.state.answer}
+          value={answer}
           placeholder='Answer'
         />
 
-        <TouchableButton styleButton={{ backgroundColor: 'black' }} styleText={{ color: 'white' }} onPress={this.submit}>
+        <TouchableButton 
+          styleButton={{ backgroundColor: 'black' }}
+          styleText={{ color: 'white' }}
+          onPress={this.submit}
+          disabled={disabledInput}
+        >
           Submit
         </TouchableButton>
 
