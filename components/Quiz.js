@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import Card from './Card'
 import Score from './Score'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 class Quiz extends React.Component {
   state = {
@@ -46,6 +47,9 @@ class Quiz extends React.Component {
         incorrect: (!hint) ? current.incorrect + 1 : current.incorrect,
         remaining: current.remaining - 1,
       }))
+
+      clearLocalNotification()
+      .then(setLocalNotification)
     }
   }
 
