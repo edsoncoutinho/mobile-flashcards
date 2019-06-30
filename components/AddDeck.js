@@ -1,9 +1,10 @@
 import React from 'react'
-import { Text, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { NavigationActions } from 'react-navigation'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
 import { saveDeckTitle } from '../utils/api'
+import TouchableButton from './TouchableButton'
 
 class AddDeck extends React.Component {
   state = {
@@ -27,21 +28,38 @@ class AddDeck extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView behavior='padding' style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>What is the title of your new deck?</Text>
+        <Text style={styles.title}>What is the title of your new deck?</Text>
 
         <TextInput
-          style={{ width: 200, height: 40, borderColor: 'gray', borderWidth: 1 }}
+          style={styles.input}
           onChangeText={(title) => this.setState({ title })}
           value={this.state.title}
+          placeholder='Deck Title'
         />
 
-        <TouchableOpacity
-          onPress={this.submit}>
-          <Text>Submit</Text>
-        </TouchableOpacity>
+        <TouchableButton styleButton={{backgroundColor: 'black'}} styleText={{color: 'white'}} onPress={this.submit}>
+          Submit
+        </TouchableButton>
+
       </KeyboardAvoidingView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 40,
+    textAlign: 'center',
+    margin: 20
+  },
+  input: {
+    width: 300,
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10
+  }
+})
 
 export default connect()(AddDeck)

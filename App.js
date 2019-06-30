@@ -6,20 +6,13 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import DeckList from './components/DeckList'
 import AddDeck from './components/AddDeck'
-
-class DeckView extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Deck View</Text>
-      </View>
-    );
-  }
-}
+import DeckView from './components/DeckView'
+import AddCard from './components/AddCard'
 
 const DeckListStack = createStackNavigator({
   DeckList: DeckList,
   DeckView: DeckView,
+  AddCard: AddCard,
 });
 
 const AppContainer = createAppContainer(createBottomTabNavigator(

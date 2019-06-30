@@ -28,11 +28,11 @@ export function saveDeckTitle (key) {
   }))
 }
 
-export function addCardToDeck ({ key, entry }) {
+export function addCardToDeck ({ key, card }) {
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
     .then((results) => {
       const data = JSON.parse(results)
-      data[key].questions.concat(entry)
+      data[key].questions.push(card)
       AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data))
     })
 }
