@@ -13,7 +13,7 @@ class DeckView extends React.Component {
         <TouchableButton onPress={() => navigation.navigate('AddCard', {key: deck.title})}>
           Add Card
         </TouchableButton>
-        <TouchableButton styleButton={{backgroundColor: 'black'}} styleText={{color: 'white'}} onPress={() => alert('Teste 2')}>
+        <TouchableButton styleButton={{backgroundColor: 'black'}} styleText={{color: 'white'}} onPress={() => navigation.navigate('Quiz', {key: deck.title})}>
           Start Quiz
         </TouchableButton>
       </View>

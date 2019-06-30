@@ -12,7 +12,8 @@ export default function TouchableButton ({ children, onPress, styleText = {}, st
 const styles = StyleSheet.create({
   button: {
     width: 200,
-    marginTop: 20,
+    margin: 20,
+    marginBottom: 0,
     borderRadius: 5,
     borderWidth: 1
   },
